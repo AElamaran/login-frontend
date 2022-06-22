@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { TouchableOpacity, StyleSheet, View } from 'react-native'
 import { Text } from 'react-native-paper'
 import Background from '../components/Background'
-import ResetPasswordScreen from '../screens/ForgotPassword'
+import ForgotPasswordScreen from '../screens/ForgotPassword'
 import Header from '../components/Header'
 import Button from '../components/Button'
 import TextInput from '../components/TextInput'
@@ -29,7 +29,8 @@ export default function LoginScreen({ navigation }) {
     }
 
     else{
-      console.log('login success');
+      Login();
+    //  console.log('login success');
     }
     // navigation.reset({
     //   index: 0,
@@ -42,7 +43,7 @@ export default function LoginScreen({ navigation }) {
   const Login = () => {
    
     axios
-      .post('http://localhost:8000/api/login11')
+      .post('http://10.10.15.163:8000/api/login11',{email:email.value,password:password.value})
       .then(response => {
         console.log(response.data);
         setLogin(response.data);
